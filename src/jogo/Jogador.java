@@ -1,6 +1,7 @@
 package jogo;
 
 import java.awt.Point;
+import java.awt.event.KeyEvent;
 import java.util.Vector;
 
 import jplay.GameObject;
@@ -26,6 +27,14 @@ public class Jogador extends Ator {
 		
 		this.setTotalDuration(2000);
 
+	}
+	ControleTiros tiros = new ControleTiros();
+	public void atirar(Window janela, Scene cena, Keyboard teclado){
+		
+		if(teclado.keyDown(KeyEvent.VK_A)){
+			tiros.adicionaTiro(x + 5, y + 12, direcao, cena);
+		}
+		tiros.run();
 	}
 
 	public void controle(Window janela, Keyboard teclado) {

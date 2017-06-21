@@ -14,7 +14,7 @@ public class Ator extends Sprite {
 	// atributos para o jogador se locomover
 		protected int direcao = 3;
 		
-		double velocidade = 1;
+		double velocidade = 1.3;
 		boolean movendo = false;
 	
 	Controle controle = new Controle();

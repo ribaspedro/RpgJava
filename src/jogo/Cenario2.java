@@ -6,7 +6,7 @@ import jplay.Scene;
 import jplay.URL;
 import jplay.Window;
 
-public class Cenario2 {
+public class Cenario2 extends Cenario {
 	private Window janela;
 	private Scene cena;
 	private Jogador jogador;
@@ -14,10 +14,10 @@ public class Cenario2 {
 	private Dragonites dragao;
 	private BestaVoraz besta;
 	public Cenario2(Window window) {
-		
+
 		janela = window;
 		cena = new Scene();
-		cena.loadFromFile(URL.scenario("Cenario1.csn"));
+		cena.loadFromFile(URL.scenario("Cenario2.csn"));
 		jogador = new Jogador(640, 350);
 		teclado = janela.getKeyboard();
 		dragao = new Dragonites(300, 300);
@@ -25,19 +25,19 @@ public class Cenario2 {
 		run();
 	}
 
-	
+
 	public void run() {
 		while (true) {
 			//cena.draw();
 			jogador.controle(janela, teclado);
 			jogador.caminho(cena);
-			
+
 			dragao.caminho(cena);
 			dragao.perseguir(jogador.x, jogador.y);
 			besta.caminho(cena);
 			besta.perseguir(jogador.x, jogador.y);
 			cena.moveScene(jogador);
-			
+
 			jogador.x += cena.getXOffset();
 			jogador.y += cena.getYOffset();
 
@@ -45,16 +45,20 @@ public class Cenario2 {
 			dragao.y += cena.getYOffset();
 			besta.x += cena.getXOffset();
 			besta.y += cena.getYOffset();
-			
+
 			jogador.draw();
 			dragao.draw();
 			besta.draw();
 			janela.update();
-			
+			mudarcenario();
+
 		}
 
 	}
-	
-	
+	private void mudarcenario(){
+		if(tileCollision(4, jogador, cena) == true){
+			new Cenario3(janela);
+		}
 
+	}
 }

@@ -6,7 +6,7 @@ import jplay.Scene;
 import jplay.URL;
 import jplay.Window;
 
-public class Cenario3 {
+public class Cenario3 extends Cenario {
 	private Window janela;
 	private Scene cena;
 	private Jogador jogador;
@@ -17,7 +17,7 @@ public class Cenario3 {
 		
 		janela = window;
 		cena = new Scene();
-		cena.loadFromFile(URL.scenario("Cenario1.csn"));
+		cena.loadFromFile(URL.scenario("Cenario3.csn"));
 		jogador = new Jogador(640, 350);
 		teclado = janela.getKeyboard();
 		dragao = new Dragonites(300, 300);
@@ -50,11 +50,19 @@ public class Cenario3 {
 			dragao.draw();
 			besta.draw();
 			janela.update();
+			mudarcenario();
 			
 		}
 
 	}
+	private void mudarcenario(){
+		if(tileCollision(4, jogador, cena) == true){
+			new Cenario1(janela);
+		}
+
 	
 	
 
+	}
+	
 }

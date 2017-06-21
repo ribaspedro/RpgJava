@@ -10,7 +10,7 @@ public class BestaVoraz extends Ator {
 			this.x =x;
 			this.y=y;
 			this.setTotalDuration(2000);
-			this.velocidade = 0.3;
+			this.velocidade = 0.6;
 		}
 		
 		public void perseguir(double x, double y){
